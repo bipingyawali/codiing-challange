@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  challenge:
+    build:
+      context: .
+    image: 'clockworkit-challenge:latest'
+    container_name: 'challenge'
+    networks:
+      - 'clockworkit'
+    restart: 'unless-stopped'
+    volumes:
+      - './WallysWidgetsCalculator.php:/opt/clockworkit-challenge/WallysWidgetsCalculator.php:rw'
+      # You can map more volumes here if any other files are included
+volumes:
+  clockworkit-challenge:
+networks:
+  clockworkit:
+    driver: bridge
